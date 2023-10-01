@@ -1,0 +1,13 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+    <div class="tasks">
+        <span id="backToHomepage"><a href="/tasks">🠔</a></span>
+        <form id="addTaskForm" action="{% url 'add' %}" method="post">
+            {% csrf_token %}
+            <input name="title" id="inputTitle" type="text" placeholder="Title" required><br>
+            <textarea name="body" id="inputBody" cols="30" rows="10" placeholder="Body"></textarea><br>
+            <button id="addTask">Add</button>
+        </form>
+    </div>
+{% endblock %}
