@@ -1,0 +1,171 @@
+html, body {
+    height: 100%;
+}
+
+html, body, * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('/static/images/wallpaper.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    height: 100%;
+}
+
+#addTask {
+    color: whitesmoke;
+    margin-bottom: 80px;
+}
+
+.tasks {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks li {
+    padding: 5px;
+    list-style-type: none;
+}
+
+.tasks a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.tasks a:hover {
+    color: palevioletred;
+}
+
+li input[type="checkbox"] {
+    width: 18px;
+    height: 18px; 
+}
+
+#backToHomepage {
+    width: 400px;
+    margin: 15px;
+    font-size: 25pt;
+}
+
+li input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.taskTrue {
+    opacity: 50%;
+}
+
+#header {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+textarea {
+    padding: 5px;
+    width: 400px;
+    resize: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.buttons {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons .buttonsAction, .buttons .buttonsEdit {
+    width: 50%;
+}
+
+.buttons .buttonsAction {
+    display: flex;
+    justify-content: end;
+}
+
+.buttons .buttonsEdit {
+    display: flex;
+    justify-content: start;
+}
+
+.buttons .buttonsAction button, .buttons .buttonsEdit button {
+    padding: 5px;
+}
+
+.buttons .buttonsEdit button {
+    margin-right: 10px;
+}
+
+.buttons .buttonsAction button {
+    margin-left: 10px;
+}
+
+.buttons .buttonsAction button:hover, .buttons .buttonsEdit button:hover, #addTask {
+    cursor: pointer;
+}
+
+.buttonsEdit #cancel, .buttonsEdit #edit, .buttonsAction #delete, .buttonsAction #undone,
+.buttonsAction #done, #addTask {
+    color: whitesmoke;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 70px;
+    height: 30px;
+}
+
+.buttonsEdit a {
+    color: whitesmoke;
+}
+
+.buttonsEdit #cancel, .buttonsEdit #edit, #addTask {
+    background-color: #656565;
+}
+
+.buttonsAction #delete {
+    background-color: rgb(191, 36, 36);
+}
+
+.buttonsAction #undone {
+    background-color: rgb(33, 33, 162);
+}
+
+.buttonsAction #done {
+    background-color: green;
+}
+
+#inputTitle {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 8px;
+}
+
+#inputTitle:hover {
+    border: 1.5px solid palevioletred;
+}
+
+#inputBody {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#inputBody:hover {
+    border: 1px solid palevioletred;
+    padding: 5px;
+}
