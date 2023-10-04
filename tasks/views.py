@@ -46,14 +46,24 @@ def uncomplete_task(request, task_id):
 
     return HttpResponse('Method not allowed', status=405)
 
-def edit_body(request, task_id):
-    new_body = request.POST[f'task{task_id}']
+def edit(request, task_id):
+    if request.method == 'POST':
+        print(request.POST)
+        new_title = request.POST.get('title', None)
+        new_body = request.POST.get('body', None)
 
-    task = Task.objects.get(pk=task_id)
-    task.body = new_body
-    task.save()
+        if new_title:
+            task = Task.objects.get(pk=task_id)
+            task.title = new_title
+            task.save()
+        if new_body:
+            task = Task.objects.get(pk=task_id)
+            task.body = new_body
+            task.save()
 
-    return redirect('/tasks')
+        return redirect('/tasks')
+
+    return HttpResponse('Method not allowed', status=405)
 
 def delete(request, task_id):
     task = Task.objects.get(pk=task_id)

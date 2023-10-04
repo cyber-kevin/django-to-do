@@ -2,56 +2,58 @@
 
 {% block content %}
 
-    <div class="tasks">
-        <span id="backToHomepage"><a href="/tasks">🠔</a></span>
+<div class="tasks">
+    <span id="backToHomepage"><a href="/tasks">🠔</a></span>
+    <form id="editForm" action="{% url 'edit' task.id %}" method="post">
+        {% csrf_token %}
         <div id="header">
-            <h1><input type="text" name="" id="inputTitle" value="{{ task.title }}"></h1>
+            <input type="text" name="title" id="inputTitle" value="{{ task.title }}">
             <p>{{ task.date }}</p>
         </div>
         {% if task.body %}
-            <form id="editForm" action="{% url 'edit_body' task.id %}" method="post">
-                {% csrf_token %}
-                <textarea name="task{{ task.id }}" id="{{ task.id }}" cols="30" rows="10">{{ task.body }}</textarea>
-            </form>
-        {% endif %}
-        <div class="buttons">
-            {% if task.body %}
-                <div class="buttonsEdit">
-                    <a href="{% url 'detail' task.id %}">
-                        <button id="cancel">
-                            Cancel
-                        </button>
-                    </a>
-                    <button id="edit" type="submit" form="editForm">
-                        Edit
-                    </button>
-                </div>
-            {% endif %}
-            <div class="buttonsAction">
-                <form action="{% url 'delete' task.id %}" method="post">
-                    {% csrf_token %}
-                    <button id="delete" type="submit">
-                        Delete
-                    </button>
-                </form>
-                {% if task.completed %}
-                    <form action="{% url 'uncomplete_task' task.id %}" method="post">
-                        {% csrf_token %}
-                        <button id="undone" type="submit">
-                            Undone
-                        </button>
-                    </form>
-                {% else %}
-                    <form action="{% url 'complete_task' task.id %}" method="post">
-                        {% csrf_token %}
-                        <button id="done" type="submit">
-                            Done
-                        </button>
-                    </form>
-                {% endif %}
-            </div>
+        <div id="body">
+            <textarea name="body" id="inputBody" cols="30" rows="10">{{ task.body }}</textarea>
         </div>
-    
+        {% endif %}
+    </form>
+    <div class="buttons">
+        {% if task.body %}
+        <div class="buttonsEdit">
+            <a href="{% url 'detail' task.id %}">
+                <button id="cancel">
+                    Cancel
+                </button>
+            </a>
+            <button id="edit" type="submit" form="editForm">
+                Edit
+            </button>
+        </div>
+        {% endif %}
+        <div class="buttonsAction">
+            <form action="{% url 'delete' task.id %}" method="post">
+                {% csrf_token %}
+                <button id="delete" type="submit">
+                    Delete
+                </button>
+            </form>
+            {% if task.completed %}
+            <form action="{% url 'uncomplete_task' task.id %}" method="post">
+                {% csrf_token %}
+                <button id="undone" type="submit">
+                    Undone
+                </button>
+            </form>
+            {% else %}
+            <form action="{% url 'complete_task' task.id %}" method="post">
+                {% csrf_token %}
+                <button id="done" type="submit">
+                    Done
+                </button>
+            </form>
+            {% endif %}
+        </div>
     </div>
+
+</div>
 
 {% endblock content %}
